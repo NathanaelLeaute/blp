@@ -104,7 +104,7 @@ class BlpSession:
             auth_options = blpapi.AuthOptions.createWithApp(kwargs["auth_app"])
             auth_correlation_id = blpapi.CorrelationId("authCorrelation")
             session_options.setSessionIdentityOptions(auth_options, auth_correlation_id)
-        kwargs.pop("auth_app")
+            kwargs.pop("auth_app")
         if "tls_client_credentials" in kwargs and "tls_trust_material" in kwargs:
             session_options.setTlsOptions(
                 blpapi.TlsOptions.createFromBlobs(
@@ -113,9 +113,9 @@ class BlpSession:
                     kwargs["tls_trust_material"]
                 )
             )
-        kwargs.pop("tls_client_credentials")
-        kwargs.pop("tls_client_credentials_password")
-        kwargs.pop("tls_trust_material")
+            kwargs.pop("tls_client_credentials")
+            kwargs.pop("tls_client_credentials_password")
+            kwargs.pop("tls_trust_material")
         for key in kwargs:
             getattr(session_options, key)(kwargs[key])
         return session_options
